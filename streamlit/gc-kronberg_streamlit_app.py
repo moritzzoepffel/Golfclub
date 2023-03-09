@@ -36,29 +36,23 @@ data_to_show = col3.selectbox("Data to show", ['Auslastung Gesamt',
                                                'Auslastung MGL 18-40', 'Auslastung MGL 40-50', 'Auslastung MGL 50-65',
                                                'Auslastung MGL 65+'])
 
-if jahr == "Alle":
-    if monat == "Alle":
-        if tag == "Alle":
-            plot_data = raw_data.copy()
-        else:
-            plot_data = raw_data[raw_data["Wochentag"] == tag]
-    else:
-        if tag == "Alle":
-            plot_data = raw_data[raw_data["monat_text"] == monat]
-        else:
-            plot_data = raw_data[(raw_data["monat_text"] == monat) & (raw_data["Wochentag"] == tag)]
+if jahr != "Alle":
+    plot_data = raw_data[raw_data["Jahr"] == jahr]
+    if monat != "Alle":
+        plot_data = plot_data[plot_data["monat_text"] == monat]
+        if tag != "Alle":
+            plot_data = plot_data[plot_data["Wochentag"] == tag]
+    elif tag != "Alle":
+        plot_data = plot_data[plot_data["Wochentag"] == tag]
+elif monat != "Alle":
+    plot_data = raw_data[raw_data["monat_text"] == monat]
+    if tag != "Alle":
+        plot_data = plot_data[plot_data["Wochentag"] == tag]
+elif tag != "Alle":
+    plot_data = raw_data[raw_data["Wochentag"] == tag]
 else:
-    if monat == "Alle":
-        if tag == "Alle":
-            plot_data = raw_data[raw_data["Jahr"] == jahr]
-        else:
-            plot_data = raw_data[(raw_data["Jahr"] == jahr) & (raw_data["Wochentag"] == tag)]
-    else:
-        if tag == "Alle":
-            plot_data = raw_data[(raw_data["Jahr"] == jahr) & (raw_data["monat_text"] == monat)]
-        else:
-            plot_data = raw_data[
-                (raw_data["Jahr"] == jahr) & (raw_data["monat_text"] == monat) & (raw_data["Wochentag"] == tag)]
+    plot_data = raw_data.copy()
+
 
 plot_data = plot_data[(plot_data["time"] >= startzeit) & (plot_data["time"] <= endzeit)]
 
