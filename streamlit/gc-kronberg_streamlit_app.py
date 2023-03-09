@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-raw_data = pd.read_csv("../data/gc_kronberg_cleaned.csv", sep=",")
+raw_data = pd.read_csv("./../data/gc_kronberg_cleaned.csv", sep=",")
 
 st.set_page_config(layout="wide")
 
