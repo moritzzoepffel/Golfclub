@@ -6,7 +6,7 @@ raw_data = pd.read_csv("../data/gc_kronberg_cleaned.csv", sep=",")
 
 st.set_page_config(layout="wide")
 
-st.title("GC Kronberg")
+st.title("Golfclub Auslastung")
 
 # st.subheader("Raw data")
 # st.write(raw_data)
