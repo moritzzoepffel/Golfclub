@@ -4,7 +4,7 @@ import plotly.express as px
 import os
 
 path = os.path.dirname(os.path.dirname(__file__))
-raw_data = pd.read_csv(f"{path}/data/gc_kronberg_cleaned.csv", sep=",")
+raw_data = pd.read_csv(f"{path}/data/golfclub_data_cleaned.csv", sep=",")
 
 st.set_page_config(layout="wide")
 
