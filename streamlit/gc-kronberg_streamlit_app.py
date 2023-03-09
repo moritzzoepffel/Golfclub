@@ -1,8 +1,10 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
 
-raw_data = pd.read_csv("./../data/gc_kronberg_cleaned.csv", sep=",")
+path = os.path.dirname(os.path.dirname(__file__))
+raw_data = pd.read_csv(f"{path}/data/gc_kronberg_cleaned.csv", sep=",")
 
 st.set_page_config(layout="wide")
 
